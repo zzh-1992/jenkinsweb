@@ -7,7 +7,7 @@
       <button :class="{ on: state.curTheme === 'snow' }" @click="switchTheme('snow')">Theme snow</button>
       <button :class="{ on: state.curTheme === 'bubble' }" @click="switchTheme('bubble')">Theme bubble</button>
 
-      <button  @click="downloadRichText()">下载富文本</button>
+      <button  @click="downloadRichText()">Test 下载富文本</button>
     </div>
     <quill-editor
         v-if="state.showEditor"
