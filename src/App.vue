@@ -3,7 +3,7 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/RichText">RichText</router-link>
   </div>
-  <router-view />
+  <router-view id="app" />
 </template>
 
 <style>
