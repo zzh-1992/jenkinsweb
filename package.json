@@ -10,6 +10,8 @@
   "dependencies": {
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
+    "highlight.js": "^10.7.3",
+    "marked": "^4.0.4",
     "vue": "^3.0.0",
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^4.0.0-0",
