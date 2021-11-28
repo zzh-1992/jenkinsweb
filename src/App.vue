@@ -1,12 +1,14 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link>
-    |
-    <router-link to="/RichText">RichText</router-link>
-    |
-    <router-link to="/Markdown">Markdown</router-link>
+  <div>
+    <div id="nav">
+      <router-link to="/">Home</router-link>
+      |
+      <router-link to="/RichText">RichText</router-link>
+      |
+      <router-link to="/Markdown">Markdown</router-link>
+    </div>
+    <router-view />
   </div>
-  <router-view id="app" />
 </template>
 
 <style>

@@ -2,9 +2,11 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 
-// 导入 axios
-import axios from "axios";
-// axios 全局配置
-axios.defaults.baseURL = "http://127.0.0.1:8888";
+// 导入封装的axios
+import http from "./http/http";
 
-createApp(App).use(router).mount("#app");
+const app = createApp(App);
+
+app.config.globalProperties.$http = http;
+
+app.use(router).mount("#app");

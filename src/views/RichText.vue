@@ -1,8 +1,8 @@
 <template>
   <div id="richText">
-    <center>
+    <div style="text-align: center">
       <h1>Dev playground</h1>
-    </center>
+    </div>
     <div class="tab-button-wrap richText">
       <button
         :class="{ on: state.curTheme === 'snow' }"
@@ -19,7 +19,7 @@
 
       <button @click="downloadRichText()">Download RichText</button>
     </div>
-    <quill-editor
+    <quillEditor
       v-if="state.showEditor"
       v-model:value="state.content"
       :options="state.editorOption"
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import axios from "axios";
+//import axios from "axios";
 
 //====================================
 // 代码来源 https://github.com/flyween/vue3-quill/blob/main/example/App.vue
@@ -118,8 +118,8 @@ export default {
     onEditorChange() {
       // 内容改变时调用接口保存
       var data = { content: this.state.content };
-      axios
-        .post("/saveMd", data)
+      this.$http
+        .post("/saveRichText", data, { headers: { token: "abc" } })
         .then((response) => {
           console.log(response);
         })
@@ -129,11 +129,11 @@ export default {
       console.log(this.content);
     },
     downloadRichText() {
-      axios
-        .post("/downloadRichText")
+      this.$http
+        .post("/downloadRichText", {}, { headers: { age: "2021" } })
         .then((response) => {
-          this.state.content = response.data;
-          console.log("res:" + response.data);
+          this.state.content = response;
+          console.log("res:" + response);
         })
         .catch((err) => {
           console.log(err);

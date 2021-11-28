@@ -7,30 +7,31 @@
 
 <script>
 import { marked } from "marked";
-import hljs from "highlight.js";
-import "highlight.js/styles/googlecode.css";
+//import "highlight.js/styles/androidstudio.css";
+import "highlight.js/styles/atom-one-dark.css";
 
 export default {
   name: "HelloWorld",
   data() {
     return {
-      input: "```java\n" +
-          "@PostMapping(\"/saveMarkdown\")\n" +
-          "public String saveMd(@RequestBody Markdown markdown){\n" +
-          "    markdown.setTitle(\"Markdown\");\n" +
-          "    markdown.setModifier(\"grape\");\n" +
-          "    markdown.setModifyTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern(\"yyyy/MM/dd HH:mm:ss\")));\n" +
-          "\n" +
-          "    markdownService.save(markdown);\n" +
-          "    return LocalDateTime.now().format(DateTimeFormatter.ofPattern(\"yyyy/MM/dd HH:mm:ss\"));\n" +
-          "    }\n" +
-          "```",
+      input:
+        "```java\n" +
+        '@PostMapping("/saveMarkdown")\n' +
+        "public String saveMd(@RequestBody Markdown markdown){\n" +
+        '    markdown.setTitle("Markdown");\n' +
+        '    markdown.setModifier("grape");\n' +
+        '    markdown.setModifyTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")));\n' +
+        "\n" +
+        "    markdownService.save(markdown);\n" +
+        '    return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));\n' +
+        "}\n" +
+        "```",
     };
   },
   computed: {
     compiledMarkdown() {
       console.log("input:" + this.input);
-      return marked(this.input, { sanitize: true });
+      return marked(this.input /*, { sanitize: true }*/);
     },
   },
   methods: {
@@ -39,19 +40,20 @@ export default {
       this.compiledMarkdown;
     },
     log() {
-      console.log("markdown initialized-------->")
+      console.log("markdown initialized-------->");
     },
   },
   mounted() {
     marked.setOptions({
       renderer: new marked.Renderer(),
-      highlight: function (code) {
-        // eslint-disable-next-line no-undef
-        return hljs.highlightAuto(code).value;
+      highlight: function (code, lang) {
+        const hljs = require("highlight.js");
+        const language = hljs.getLanguage(lang) ? lang : "plaintext";
+        return hljs.highlight(code, { language }).value;
       },
+      langPrefix: "hljs language-", // highlight.js css expects a top-level 'hljs' class.
       pedantic: false,
       gfm: true,
-      tables: true,
       breaks: false,
       sanitize: false,
       smartLists: true,
