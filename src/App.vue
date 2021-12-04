@@ -11,6 +11,18 @@
   </div>
 </template>
 
+<script>
+export default {
+  mounted() {
+    let env = process.env;
+    console.log("env " + env);
+    console.log("env_NAME: " + env.NAME);
+    console.log("env_VUE_APP_NAME " + env.VUE_APP_NAME);
+    console.log("当前环境：" + env.NODE_ENV);
+  },
+};
+</script>
+
 <style>
 #nav {
   font-family: Avenir, Helvetica, Arial, sans-serif;
