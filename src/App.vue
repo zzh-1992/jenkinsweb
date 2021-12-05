@@ -1,14 +1,18 @@
 <template>
-  <div>
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-      |
-      <router-link to="/RichText">RichText</router-link>
-      |
-      <router-link to="/Markdown">Markdown</router-link>
-    </div>
-    <router-view />
-  </div>
+  <el-container>
+    <el-header>
+      <div id="nav">
+        <router-link to="/">Home</router-link>
+        |
+        <router-link to="/RichText">RichText</router-link>
+        |
+        <router-link to="/Markdown">Markdown</router-link>
+      </div>
+    </el-header>
+    <el-main>
+      <router-view />
+    </el-main>
+  </el-container>
 </template>
 
 <script>
