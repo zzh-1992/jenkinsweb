@@ -5,7 +5,7 @@ const http = axios.create({
   headers: { name: "grape" },
 });
 // axios 全局配置
-http.defaults.baseURL = "http://127.0.0.1:8888";
+http.defaults.baseURL = "http://47.115.52.42:8888";
 // 添加请求拦截器
 http.interceptors.request.use(
   function (config) {
