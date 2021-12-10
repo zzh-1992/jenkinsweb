@@ -7,6 +7,8 @@
         <router-link to="/RichText">RichText</router-link>
         |
         <router-link to="/Markdown">Markdown</router-link>
+        |
+        <router-link to="/T">T</router-link>
       </div>
     </el-header>
     <el-main>

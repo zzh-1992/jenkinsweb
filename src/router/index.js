@@ -1,12 +1,18 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Markdown from "../views/Markdown";
+import T from "../views/TableFilter";
 
 const routes = [
   {
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/T",
+    name: "T",
+    component: T,
   },
   {
     path: "/Markdown",
