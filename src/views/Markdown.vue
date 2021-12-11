@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <el-container class="myContainer">
     <el-row>
       <el-col :span="24">
         <el-col :span="8">

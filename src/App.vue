@@ -1,15 +1,15 @@
 <template>
-  <el-container>
-    <el-header>
-      <div id="nav">
-        <router-link to="/">Home</router-link>
-        |
-        <router-link to="/RichText">RichText</router-link>
-        |
-        <router-link to="/Markdown">Markdown</router-link>
-        |
-        <router-link to="/T">T</router-link>
-      </div>
+  <el-container class="myContainer">
+    <el-header id="nav">
+      <router-link to="/">Home</router-link>
+      |
+      <router-link to="/RichText">RichText</router-link>
+      |
+      <router-link to="/Markdown">Markdown</router-link>
+      |
+      <router-link to="/T">T</router-link>
+      |
+      <router-link to="/MD">MD</router-link>
     </el-header>
     <el-main>
       <router-view />
@@ -40,12 +40,16 @@ export default {
 }
 
 #nav {
-  padding: 30px;
+  padding: 20px;
 }
 
 #nav a {
   font-weight: bold;
   color: #cdd4dc;
+}
+
+.myContainer {
+  height: 100%;
 }
 
 #nav a.router-link-exact-active {

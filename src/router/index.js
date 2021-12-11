@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Markdown from "../views/Markdown";
 import T from "../views/TableFilter";
+import MD from "../views/MD";
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     path: "/T",
     name: "T",
     component: T,
+  },
+  {
+    path: "/MD",
+    name: "MD",
+    component: MD,
   },
   {
     path: "/Markdown",
