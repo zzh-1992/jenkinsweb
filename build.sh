@@ -13,7 +13,9 @@ cnpm run build_pro
 
 docker stop 24f7ac876b83
 rm -rf /usr/nginx/dist
-cp -rf ./dist /usr/nginx/dist
+
+# 使用绝对路径
+cp -rf /var/lib/jenkins/workspace/jenkinsweb/dist /usr/nginx/dist
 docker start 24f7ac876b83
 
 echo "=============================================="
