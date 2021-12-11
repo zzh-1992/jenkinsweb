@@ -60,8 +60,17 @@
         </el-drawer>
 
         <div id="editor">
-          <textarea class="md" :value="input" @input="update"></textarea>
-          <div class="md" v-html="compiledMarkdown"></div>
+          <textarea
+            class="md"
+            style="font-size: 25px"
+            :value="input"
+            @input="update"
+          ></textarea>
+          <div
+            class="md"
+            style="font-size: 25px"
+            v-html="compiledMarkdown"
+          ></div>
         </div>
       </el-col>
     </el-row>
