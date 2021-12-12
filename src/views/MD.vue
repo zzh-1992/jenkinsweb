@@ -21,10 +21,13 @@
     <el-container>
       <el-header style="background: #56a13e">
         <span>{{ title }}</span>
+        <!-- 引用子组件,父->子 props:绑定参数 子->父 定义事件 -->
+        <Tag v-bind:tags="tags" v-bind:hello="2021" @childTag="fromChild">
+        </Tag>
       </el-header>
       <el-main>
         <div id="editor">
-          <!--          <textarea class="md" :value="input" @input="update"></textarea>-->
+          <!-- <textarea class="md" :value="input" @input="update"></textarea>-->
           <div class="md" v-html="compiledMarkdown"></div>
         </div>
       </el-main>
@@ -38,9 +41,10 @@ import { defineComponent, ref } from "vue";
 import { marked } from "marked";
 //import "highlight.js/styles/androidstudio.css";
 import "highlight.js/styles/atom-one-dark.css";
+import Tag from "./Tag";
 
 export default defineComponent({
-  components: {},
+  components: { Tag },
   mounted() {
     this.downloadAllMd();
     marked.setOptions({
@@ -70,6 +74,8 @@ export default defineComponent({
   },
   data() {
     return {
+      tags: [],
+      message: "",
       title: "",
       tableData: [],
       // markdown内容
@@ -81,6 +87,10 @@ export default defineComponent({
     };
   },
   methods: {
+    fromChild(childData) {
+      // 将子组件传递的数据赋值给父组件的tags
+      this.tags = childData.dynamicTags;
+    },
     downloadAllMd() {
       this.drawer = true;
       console.log("下载所有");
@@ -103,6 +113,7 @@ export default defineComponent({
           this.input = response.content;
           this.id = response.id;
           this.title = response.title;
+          this.tags = response.tagArray;
           // 成功获取文件后关闭draw
           this.drawer = false;
           console.log("List:" + response);

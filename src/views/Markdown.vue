@@ -35,6 +35,12 @@
         <el-col :span="18">
           <el-input v-model="title" placeholder="Please input title"></el-input>
         </el-col>
+
+        <el-col :span="18">
+          <!-- 引用子组件,父->子 props:绑定参数 子->父 定义事件 -->
+          <Tag v-bind:tags="tags" v-bind:hello="2021" @childTag="fromChild">
+          </Tag>
+        </el-col>
       </el-col>
       <el-col :span="24">
         <el-drawer
@@ -84,13 +90,15 @@ import "highlight.js/styles/atom-one-dark.css";
 
 import { ref } from "vue";
 import { ElMessageBox } from "element-plus";
+import Tag from "./Tag";
 
 export default {
   name: "HelloWorld",
-  components: {},
+  components: { Tag },
   component: {},
   data() {
     return {
+      tags: [],
       title: "",
       tableData: [],
       // markdown内容
@@ -108,6 +116,10 @@ export default {
     },
   },
   methods: {
+    fromChild(childData) {
+      // 将子组件传递的数据赋值给父组件的tags
+      this.tags = childData.dynamicTags;
+    },
     download() {
       //alert("modelValue:" + this.drawer);
       // 设置drawer为false 关闭侧边栏
@@ -122,14 +134,21 @@ export default {
       this.id = "";
       this.input = "";
       this.title = "";
+      this.tags = [];
     },
     // 保存或更新
     saveMarkdown() {
       let input1 = this.input;
       let id1 = this.id;
       let title = this.title;
+      let tags = this.tags;
       this.$http
-        .post("/saveMarkdown", { id: id1, title: title, content: input1 })
+        .post("/saveMarkdown", {
+          id: id1,
+          title: title,
+          content: input1,
+          tags: tags.toString(),
+        })
         .then((response) => {
           //this.tableData = response;
           this.id = response.id;
@@ -164,6 +183,7 @@ export default {
           this.input = response.content;
           this.id = response.id;
           this.title = response.title;
+          this.tags = response.tagArray;
           // 成功获取文件后关闭draw
           this.drawer = false;
           console.log("List:" + response);

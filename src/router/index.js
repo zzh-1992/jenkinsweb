@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import Markdown from "../views/Markdown";
 import T from "../views/TableFilter";
 import MD from "../views/MD";
+import Tag from "../views/Tag";
 
 const routes = [
   {
@@ -14,6 +15,11 @@ const routes = [
     path: "/T",
     name: "T",
     component: T,
+  },
+  {
+    path: "/Tag",
+    name: "Tag",
+    component: Tag,
   },
   {
     path: "/MD",
