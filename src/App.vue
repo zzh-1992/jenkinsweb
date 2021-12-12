@@ -22,8 +22,9 @@ export default {
   mounted() {
     let env = process.env;
     console.log("env " + env);
-    console.log("env_NAME: " + env.NAME);
+    console.log("env_BASE_URL: " + env.BASE_URL);
     console.log("env_VUE_APP_NAME " + env.VUE_APP_NAME);
+    console.log("env_VUE_APP_BASE_API " + env.VUE_APP_BASE_API);
     console.log("当前环境：" + env.NODE_ENV);
   },
 };
