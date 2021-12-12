@@ -91,6 +91,7 @@ import "highlight.js/styles/atom-one-dark.css";
 import { ref } from "vue";
 import { ElMessageBox } from "element-plus";
 import Tag from "./Tag";
+import { ElMessage } from "element-plus";
 
 export default {
   name: "HelloWorld",
@@ -153,9 +154,13 @@ export default {
           //this.tableData = response;
           this.id = response.id;
           console.log("List:" + response);
+          // 成功提示
+          this.successMsg(new Date().toDateString());
         })
         .catch((err) => {
           console.log(err);
+          // 失败提示
+          this.errorMsg(err);
         });
     },
     log() {
@@ -214,6 +219,19 @@ export default {
     this.compiledMarkdown;
   },
   setup() {
+    const successMsg = (msg) => {
+      ElMessage({
+        message: "Successfully saved." + msg,
+        type: "success",
+      });
+    };
+    const errorMsg = (msg) => {
+      ElMessage({
+        message: "Failed saved." + msg,
+        type: "error",
+      });
+    };
+
     const drawer = ref(false);
     console.log("-======>");
     // 默认左侧显示
@@ -231,6 +249,8 @@ export default {
       drawer,
       direction,
       handleClose,
+      successMsg,
+      errorMsg,
     };
   },
 };
