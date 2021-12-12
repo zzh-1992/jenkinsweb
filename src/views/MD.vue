@@ -9,7 +9,9 @@
         <el-table-column label="文章列表">
           <template v-slot="scope">
             <div @click="downloadMdById(scope.row.id)">
-              {{ scope.row.title }}
+              <el-link>
+                {{ scope.row.title }}
+              </el-link>
             </div>
           </template>
         </el-table-column>
