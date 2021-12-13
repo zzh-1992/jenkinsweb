@@ -4,8 +4,16 @@ const http = axios.create({
   // 添加默认请求头
   headers: { name: "grape" },
 });
+
 // axios 全局配置
-http.defaults.baseURL = "http://47.115.42.52:8888";
+let env = process.env.NODE_ENV;
+if (env === "dev") {
+  http.defaults.baseURL = "http://127.0.0.1:8888";
+}
+if (env === "pro") {
+  http.defaults.baseURL = "http://47.115.42.52:8888";
+}
+
 // 添加请求拦截器
 http.interceptors.request.use(
   function (config) {
