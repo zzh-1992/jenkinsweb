@@ -12,6 +12,8 @@
       <router-link to="/MD">MD</router-link>
       |
       <router-link to="/Tag">Tag</router-link>
+      |
+      <router-link to="/MarkdownPro">MarkdownPro</router-link>
     </el-header>
     <el-main>
       <router-view />

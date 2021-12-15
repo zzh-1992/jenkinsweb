@@ -4,12 +4,18 @@ import Markdown from "../views/Markdown";
 import T from "../views/TableFilter";
 import MD from "../views/MD";
 import Tag from "../views/Tag";
+import MarkdownPro from "../views/VueMeditor";
 
 const routes = [
   {
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/MarkdownPro",
+    name: "MarkdownPro",
+    component: MarkdownPro,
   },
   {
     path: "/T",
