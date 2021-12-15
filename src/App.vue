@@ -14,7 +14,7 @@
       <router-link to="/Tag">Tag</router-link>
     </el-header>
     <el-main>
-      <router-view/>
+      <router-view />
     </el-main>
   </el-container>
 </template>
