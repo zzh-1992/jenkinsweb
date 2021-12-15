@@ -2,9 +2,9 @@
   <el-container style="height: 800px">
     <el-aside width="250px" style="background-color: #333333">
       <el-table
-        max-height="800"
-        :data="tableData"
-        style="width: 100%; height: 100%"
+          max-height="800"
+          :data="tableData"
+          style="width: 100%; height: 100%"
       >
         <el-table-column label="文章列表">
           <template v-slot="scope">
@@ -28,7 +28,7 @@
       <el-main>
         <div id="editor">
           <!-- <textarea class="md" :value="input" @input="update"></textarea>-->
-          <div class="md" v-html="compiledMarkdown"></div>
+          <div class="markdown-body md" v-html="compiledMarkdown"></div>
         </div>
       </el-main>
     </el-container>
@@ -36,15 +36,18 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import {defineComponent, ref} from "vue";
 
-import { marked } from "marked";
+import {marked} from "marked";
 //import "highlight.js/styles/androidstudio.css";
-import "highlight.js/styles/atom-one-dark.css";
+import "highlight.js/styles/atelier-dune-dark.css";
 import Tag from "./Tag";
 
+// 导入markdown样式
+import "../static/github-markdown.min.css";
+
 export default defineComponent({
-  components: { Tag },
+  components: {Tag},
   mounted() {
     this.downloadAllMd();
     marked.setOptions({
@@ -52,7 +55,7 @@ export default defineComponent({
       highlight: function (code, lang) {
         const hljs = require("highlight.js");
         const language = hljs.getLanguage(lang) ? lang : "plaintext";
-        return hljs.highlight(code, { language }).value;
+        return hljs.highlight(code, {language}).value;
       },
       langPrefix: "hljs language-", // highlight.js css expects a top-level 'hljs' class.
       pedantic: false,
@@ -92,35 +95,35 @@ export default defineComponent({
       this.tags = childData.dynamicTags;
     },
     downloadAllMd() {
-      this.drawer = true;
+      this.drawer = true
       console.log("下载所有");
       this.$http
-        .post("/downloadAllMd")
-        .then((response) => {
-          this.tableData = response;
-          console.log("List:" + response);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+          .post("/downloadAllMd")
+          .then((response) => {
+            this.tableData = response;
+            console.log("List:" + response);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
     },
     downloadMdById(id) {
       console.log("下载:" + id.toString());
       this.$http
-        .post("/downloadMdById", { id: id.toString() })
-        .then((response) => {
-          // 属性赋值
-          this.input = response.content;
-          this.id = response.id;
-          this.title = response.title;
-          this.tags = response.tagArray;
-          // 成功获取文件后关闭draw
-          this.drawer = false;
-          console.log("List:" + response);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+          .post("/downloadMdById", {id: id.toString()})
+          .then((response) => {
+            // 属性赋值
+            this.input = response.content;
+            this.id = response.id;
+            this.title = response.title;
+            this.tags = response.tagArray;
+            // 成功获取文件后关闭draw
+            this.drawer = false;
+            console.log("List:" + response);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
     },
   },
   setup() {

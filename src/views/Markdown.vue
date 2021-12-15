@@ -67,13 +67,13 @@
 
         <div id="editor">
           <textarea
-            class="md"
+            class="md markdown-body"
             style="font-size: 25px"
             :value="input"
             @input="update"
           ></textarea>
           <div
-            class="md"
+            class="md markdown-body"
             style="font-size: 25px"
             v-html="compiledMarkdown"
           ></div>
@@ -87,6 +87,9 @@
 import { marked } from "marked";
 //import "highlight.js/styles/androidstudio.css";
 import "highlight.js/styles/atom-one-dark.css";
+
+// 导入markdown样式
+import "../static/github-markdown.min.css";
 
 import { ref } from "vue";
 import { ElMessageBox } from "element-plus";
