@@ -4,10 +4,12 @@ echo "=============================================="
 echo "=========Begin to create web service ========="
 echo "=============================================="
 
-##cnpm install node-sass --save-dev
-##cnpm install sass-loader --save-dev
-
-#cnpm install
+# 安装依赖包
+cnpm install node-sass --save-dev
+cnpm install sass-loader --save-dev
+cnpm install --legacy-peer-deps
+cnpm install --save element-plus
+cnpm install
 
 cnpm run build_pro
 
