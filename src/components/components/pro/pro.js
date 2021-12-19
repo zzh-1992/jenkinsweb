@@ -7,10 +7,10 @@ import codemirrorConfig from "../../assets/js/codemirror/config";
 import "../../assets/js/codemirror/styles/codemirror.css";
 import common from "../../mixins/common";
 import marked from "../../config/marked";
-import {
-  ElMessage,
-  ElMessageBox,
-} from "_element-plus@1.2.0-beta.6@element-plus";
+
+import { ElMessageBox } from "element-plus";
+import { ElMessage } from "element-plus";
+
 import { ref } from "_vue@3.2.26@vue";
 
 export default {
