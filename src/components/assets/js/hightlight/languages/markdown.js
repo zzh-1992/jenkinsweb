@@ -1,107 +1,116 @@
-module.exports = function(hljs) {
+module.exports = function () {
+  // module.exports = function (hljs) {
   return {
-    aliases: ['md', 'mkdown', 'mkd'],
+    aliases: ["md", "mkdown", "mkd"],
     contains: [
       // highlight headers
       {
-        className: 'section',
+        className: "section",
         variants: [
-          { begin: '^#{1,6}', end: '$' },
-          { begin: '^.+?\\n[=-]{2,}$' }
-        ]
+          { begin: "^#{1,6}", end: "$" },
+          { begin: "^.+?\\n[=-]{2,}$" },
+        ],
       },
       // inline html
       {
-        begin: '<', end: '>',
-        subLanguage: 'xml',
-        relevance: 0
+        begin: "<",
+        end: ">",
+        subLanguage: "xml",
+        relevance: 0,
       },
       // lists (indicators only)
       {
-        className: 'bullet',
-        begin: '^\\s*([*+-]|(\\d+\\.))\\s+'
+        className: "bullet",
+        begin: "^\\s*([*+-]|(\\d+\\.))\\s+",
       },
       // strong segments
       {
-        className: 'strong',
-        begin: '[*_]{2}.+?[*_]{2}'
+        className: "strong",
+        begin: "[*_]{2}.+?[*_]{2}",
       },
       // emphasis segments
       {
-        className: 'emphasis',
-        variants: [
-          { begin: '\\*.+?\\*' },
-          { begin: '_.+?_'
-          , relevance: 0
-          }
-        ]
+        className: "emphasis",
+        variants: [{ begin: "\\*.+?\\*" }, { begin: "_.+?_", relevance: 0 }],
       },
       // blockquotes
       {
-        className: 'quote',
-        begin: '^>\\s+', end: '$'
+        className: "quote",
+        begin: "^>\\s+",
+        end: "$",
       },
       // code snippets
       {
-        className: 'code',
+        className: "code",
         variants: [
           {
-            begin: '^```\w*\s*$', end: '^```\s*$'
+            begin: "^```w*s*$",
+            end: "^```s*$",
           },
           {
-            begin: '`.+?`'
+            begin: "`.+?`",
           },
           {
-            begin: '^( {4}|\t)', end: '$',
-            relevance: 0
-          }
-        ]
+            begin: "^( {4}|\t)",
+            end: "$",
+            relevance: 0,
+          },
+        ],
       },
       // horizontal rules
       {
-        begin: '^[-\\*]{3,}', end: '$'
+        begin: "^[-\\*]{3,}",
+        end: "$",
       },
       // using links - title and link
       {
-        begin: '\\[.+?\\][\\(\\[].*?[\\)\\]]',
+        begin: "\\[.+?\\][\\(\\[].*?[\\)\\]]",
         returnBegin: true,
         contains: [
           {
-            className: 'string',
-            begin: '\\[', end: '\\]',
+            className: "string",
+            begin: "\\[",
+            end: "\\]",
             excludeBegin: true,
             returnEnd: true,
-            relevance: 0
+            relevance: 0,
           },
           {
-            className: 'link',
-            begin: '\\]\\(', end: '\\)',
-            excludeBegin: true, excludeEnd: true
+            className: "link",
+            begin: "\\]\\(",
+            end: "\\)",
+            excludeBegin: true,
+            excludeEnd: true,
           },
           {
-            className: 'symbol',
-            begin: '\\]\\[', end: '\\]',
-            excludeBegin: true, excludeEnd: true
-          }
+            className: "symbol",
+            begin: "\\]\\[",
+            end: "\\]",
+            excludeBegin: true,
+            excludeEnd: true,
+          },
         ],
-        relevance: 10
+        relevance: 10,
       },
       {
         begin: /^\[[^\n]+\]:/,
         returnBegin: true,
         contains: [
           {
-            className: 'symbol',
-            begin: /\[/, end: /\]/,
-            excludeBegin: true, excludeEnd: true
+            className: "symbol",
+            begin: /\[/,
+            end: /\]/,
+            excludeBegin: true,
+            excludeEnd: true,
           },
           {
-            className: 'link',
-            begin: /:\s*/, end: /$/,
-            excludeBegin: true
-          }
-        ]
-      }
-    ]
+            className: "link",
+            begin: /:\s*/,
+            end: /$/,
+            excludeBegin: true,
+          },
+        ],
+      },
+    ],
   };
 };
