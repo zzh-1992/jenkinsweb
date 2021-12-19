@@ -11,7 +11,7 @@ import marked from "../../config/marked";
 import { ElMessageBox } from "element-plus";
 import { ElMessage } from "element-plus";
 
-import { ref } from "_vue@3.2.26@vue";
+import { ref } from "vue";
 
 export default {
   name: "markdown-pro",
