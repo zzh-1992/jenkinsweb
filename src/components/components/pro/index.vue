@@ -84,7 +84,7 @@
       <li v-if="tools.uploadImage" name="本地图片">
         <span @click="chooseImage" class="iconfont icon-upload-img"></span>
       </li>
-      <li v-if="tools.table" name="表格">
+      <li v-if="tools.table" name="Table">
         <span @click="insertTable" class="iconfont icon-table"></span>
       </li>
       <li v-if="tools.theme" class="shift-theme" name="代码块主题">
