@@ -23,11 +23,72 @@ export default {
       lastPos: "", // 光标最后所在位置
     };
   },
+  setup() {
+    const successMsg = (msg) => {
+      ElMessage({
+        message: "Successfully saved ." + msg,
+        type: "success",
+      });
+    };
+    const errorMsg = (msg) => {
+      ElMessage({
+        message: "Failed saved." + msg,
+        type: "error",
+      });
+    };
+
+    const drawer = ref(false);
+    console.log("-======>");
+    // 默认左侧显示
+    const direction = ref("ltr");
+    const handleClose = (done) => {
+      ElMessageBox.confirm("Are you sure you want to close this?")
+        .then(() => {
+          done();
+        })
+        .catch(() => {
+          // catch error
+        });
+    };
+    return {
+      drawer,
+      direction,
+      handleClose,
+      successMsg,
+      errorMsg,
+    };
+  },
   mounted() {
     this.init();
     this.createEditor();
   },
   methods: {
+    // 保存或更新
+    saveMarkdown() {
+      let input1 = this.input;
+      //let id1 = this.id;
+      //let title = this.title;
+      //let tags = this.tags;
+      this.$http
+        .post("/saveMarkdown", {
+          //id: id1,
+          //title: title,
+          content: input1,
+          //tags: tags.toString(),
+        })
+        .then((response) => {
+          //this.tableData = response;
+          this.id = response.id;
+          console.log("List:" + response);
+          // 成功提示
+          this.successMsg(new Date().toDateString());
+        })
+        .catch((err) => {
+          console.log(err);
+          // 失败提示
+          this.errorMsg(err);
+        });
+    },
     init() {
       // 初始化
       this.currentValue = this.value;
