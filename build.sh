@@ -11,12 +11,13 @@ echo "=============================================="
 
 cnpm run build_pro
 
-docker stop 24f7ac876b83
+# 停止jenkinsweb8081容器
+docker stop 584ed423f7f0
 rm -rf /usr/nginxForJenkinsWeb8081/dist
 
 # 使用绝对路径
-cp -rf /var/lib/jenkins/workspace/jenkinsweb_tmp/dist /usr/nginx/dist
-docker start 24f7ac876b83
+cp -rf /var/lib/jenkins/workspace/jenkinsweb_tmp/dist /usr/nginxForJenkinsWeb8081/dist
+docker start 584ed423f7f0
 
 echo "=============================================="
 echo "============success to run web   !============"
