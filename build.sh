@@ -12,7 +12,7 @@ echo "=============================================="
 cnpm run build_pro
 
 docker stop 24f7ac876b83
-rm -rf /usr/nginx/dist
+rm -rf /usr/nginxForJenkinsWeb8081/dist
 
 # 使用绝对路径
 cp -rf /var/lib/jenkins/workspace/jenkinsweb_tmp/dist /usr/nginx/dist
