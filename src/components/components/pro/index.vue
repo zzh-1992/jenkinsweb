@@ -115,6 +115,10 @@
       <li name="保存到本地" v-show="tools.exportmd">
         <span class="iconfont icon-download" @click="exportFile"></span>
       </li>
+      <li name="保存到服务器" v-show="tools.exportmd">
+        <span class="iconfont icon-save" @click="saveMarkdown"></span>
+      </li>
+
       <li v-if="tools.split && split" name="全屏编辑">
         <span @click="split = false" class="iconfont icon-md"></span>
       </li>

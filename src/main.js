@@ -7,10 +7,11 @@ import http from "./http/http";
 
 // 添加组件库
 import ElementPlus from "element-plus";
+import { ElIcon } from "element-plus";
 import "element-plus/dist/index.css";
 
 const app = createApp(App);
 
 app.config.globalProperties.$http = http;
 
-app.use(router).use(ElementPlus).mount("#app");
+app.use(router).use(ElementPlus).use(ElIcon).mount("#app");

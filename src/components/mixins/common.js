@@ -18,7 +18,7 @@ export default {
         },
         height: {// 初始化高度
             type: Number,
-            default: 600
+            default: 850
         },
         toolbars: {// 工具栏
             type: Object,
@@ -124,6 +124,33 @@ export default {
         exportFile() {// 导出为.md格式
             saveFile(this.currentValue, this.exportFileName + '.md');
         },
+        // 保存或更新
+        saveMarkdown() {
+            let input1 = this.currentValue;
+            let id1 = this.id;
+            //let title = this.title;
+            //let tags = this.tags;
+            this.$http
+                .post("/saveMarkdown", {
+                    //id: id1,
+                    //title: title,
+                    content: input1,
+                    //tags: tags.toString(),
+                })
+                .then((response) => {
+                    //this.tableData = response;
+                    this.id = response.id;
+                    console.log("List:" + response);
+                    // 成功提示
+                    this.successMsg(new Date().toDateString());
+                })
+                .catch((err) => {
+                    console.log(err);
+                    // 失败提示
+                    this.errorMsg(err);
+                });
+        },
+
         importFile(e) {// 导入本地文件
             const file = e.target.files[0];
             if (!file) {
