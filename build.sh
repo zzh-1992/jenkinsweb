@@ -11,7 +11,7 @@ cnpm install --legacy-peer-deps
 cnpm install --save element-plus
 cnpm install
 
-cnpm run build_pro
+cnpm run build
 
 # 停止jenkinsweb8081容器
 docker stop 584ed423f7f0
