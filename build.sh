@@ -9,7 +9,7 @@ cnpm install sass-loader --save-dev
 
 cnpm install
 
-cnpm run build_pro
+cnpm run build
 
 # 停止jenkinsweb8082容器
 docker stop 1a451c388a2a
