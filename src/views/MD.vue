@@ -19,16 +19,27 @@
     </el-aside>
 
     <el-container>
-      <el-header style="background: #56a13e">
+      <el-header>
         <span>{{ title }}</span>
+        <el-button type="success" @click="isShowText">显示原文</el-button>
+        <el-button type="info" @click="isShowMd">显示md</el-button>
         <!-- 引用子组件,父->子 props:绑定参数 子->父 定义事件 -->
         <Tag v-bind:tags="tags" v-bind:hello="2021" @childTag="fromChild">
         </Tag>
       </el-header>
       <el-main>
         <div id="editor">
-          <!-- <textarea class="md" :value="input" @input="update"></textarea>-->
-          <div class="markdown-body md" v-html="compiledMarkdown"></div>
+          <textarea
+            v-show="showText"
+            class="markdown-body md"
+            :value="input"
+            @input="update"
+          ></textarea>
+          <div
+            v-show="showMd"
+            class="markdown-body md"
+            v-html="compiledMarkdown"
+          ></div>
         </div>
       </el-main>
     </el-container>
@@ -77,6 +88,8 @@ export default defineComponent({
   },
   data() {
     return {
+      showMd: true,
+      showText: false,
       tags: [],
       message: "",
       title: "",
@@ -90,6 +103,18 @@ export default defineComponent({
     };
   },
   methods: {
+    isShowMd() {
+      this.showMd = true;
+      this.showText = false;
+    },
+    isShowText() {
+      this.showMd = false;
+      this.showText = true;
+    },
+    update(e) {
+      this.input = e.target.value;
+      this.compiledMarkdown;
+    },
     fromChild(childData) {
       // 将子组件传递的数据赋值给父组件的tags
       this.tags = childData.dynamicTags;
