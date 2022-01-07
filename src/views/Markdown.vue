@@ -30,6 +30,14 @@
           >
             New MD
           </el-button>
+
+          <el-button
+            type="warning"
+            style="margin-right: 16px"
+            @click="timeOut()"
+          >
+            timeOut
+          </el-button>
         </el-col>
 
         <el-col :span="18">
@@ -168,6 +176,20 @@ export default {
     },
     log() {
       console.log("markdown initialized-------->");
+    },
+    timeOut() {
+      this.$http
+        .get("/timeOut")
+        .then((response) => {
+          console.log("timeOut api:" + response.toString());
+        })
+        .catch((err) => {
+          var msg = "";
+          msg = err.message;
+          if (msg.startsWith("timeout of 2000ms exceeded")) {
+            alert("接口超时,建议减少数据后再尝试");
+          }
+        });
     },
     downloadAllMd() {
       this.drawer = true;

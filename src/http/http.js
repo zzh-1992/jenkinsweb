@@ -14,6 +14,9 @@ if (env === "pro") {
   http.defaults.baseURL = "http://47.115.42.52:8888";
 }
 
+// 设置接口请求时间2000毫秒
+http.defaults.timeout = 2000;
+
 // 添加请求拦截器
 http.interceptors.request.use(
   function (config) {
