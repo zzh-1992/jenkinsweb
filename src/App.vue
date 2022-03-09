@@ -37,8 +37,8 @@ export default {
 </script>
 
 <style>
-.footer{
-  margin-right: 24px
+.footer {
+  margin-right: 24px;
 }
 #nav {
   font-family: Avenir, Helvetica, Arial, sans-serif;
