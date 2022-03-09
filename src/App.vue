@@ -16,6 +16,10 @@
     <el-main>
       <router-view />
     </el-main>
+
+    <el-footer class="footer">
+      <a rel="nofollow" href="http://beian.miit.gov.cn/">粤ICP备2022024777号</a>
+    </el-footer>
   </el-container>
 </template>
 
@@ -33,6 +37,9 @@ export default {
 </script>
 
 <style>
+.footer{
+  margin-right: 24px
+}
 #nav {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
