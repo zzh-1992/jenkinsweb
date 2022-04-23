@@ -4,6 +4,7 @@ import Markdown from "../views/Markdown";
 import T from "../views/TableFilter";
 import MD from "../views/MD";
 import Tag from "../views/Tag";
+import Socket from "@/views/Socket";
 
 const routes = [
   {
@@ -39,6 +40,11 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/RichText.vue"),
+  },
+  {
+    path: "/Socket",
+    name: "Socket",
+    component: Socket,
   },
 ];
 
