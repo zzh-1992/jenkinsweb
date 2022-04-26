@@ -34,8 +34,7 @@ export default {
      */
     initWebSocket() {
       //const wsuri = "ws://127.0.0.1:8888/msg/" + Cookies.get("userId");
-      //const wsuri = "ws://127.0.0.1:8888/msg/" + "zzh";
-      const wsuri = "ws://127.0.0.1:8081/consumer/msg/" + "zzh";
+      const wsuri = "ws://127.0.0.1:8888/msg/" + "haha";
       this.websock = new WebSocket(wsuri);
       this.websock.onmessage = this.webSocketOnMessage;
       this.websock.onopen = this.webSocketOnopen;
