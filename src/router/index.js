@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import Markdown from "../views/Markdown";
-import T from "../views/TableFilter";
-import MD from "../views/MD";
-import Tag from "../views/Tag";
-import Socket from "@/views/Socket";
+
+const Home = () => import('../views/Home')
+const Markdown = () => import('../views/Markdown')
+const T = () => import('../views/T')
+const MD = () => import('../views/MD')
+const Tag = () => import('../views/Tag')
+const Socket = () => import('../views/Socket')
+const RichText = () => import('../views/RichText')
 
 const routes = [
   {
@@ -38,8 +40,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/RichText.vue"),
+    component: RichText,
   },
   {
     path: "/Socket",
