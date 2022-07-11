@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const Home = () => import('../views/Home')
 const Markdown = () => import('../views/Markdown')
-const T = () => import('../views/T')
 const MD = () => import('../views/MD')
 const Tag = () => import('../views/Tag')
 const Socket = () => import('../views/Socket')
@@ -13,11 +12,6 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-  },
-  {
-    path: "/T",
-    name: "T",
-    component: T,
   },
   {
     path: "/Tag",
