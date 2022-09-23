@@ -11,13 +11,13 @@ cnpm install
 
 cnpm run build
 
-# 停止jenkinsweb8082容器
-docker stop 1a451c388a2a
+# 停止nginx容器
+docker stop nginx
 rm -rf /usr/nginx/dist
 
 # 使用绝对路径
 cp -rf /var/lib/jenkins/workspace/jenkinsweb/dist /usr/nginx/dist
-docker start 1a451c388a2a
+docker start nginx
 
 echo "=============================================="
 echo "============success to run web   !============"
