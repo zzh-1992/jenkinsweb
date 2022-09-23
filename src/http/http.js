@@ -11,7 +11,7 @@ if (env === "dev") {
   http.defaults.baseURL = "http://127.0.0.1:8888";
 }
 if (env === "pro") {
-  http.defaults.baseURL = "http://graprfruit.com.cn:8888";
+  http.defaults.baseURL = "http://139.9.189.88:8888";
 }
 
 // 设置接口请求时间2000毫秒
