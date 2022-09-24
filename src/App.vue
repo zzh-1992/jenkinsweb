@@ -1,8 +1,6 @@
 <template>
   <el-container class="myContainer">
     <el-header id="nav">
-      <router-link to="/">Home</router-link>
-      |
       <router-link to="/RichText">RichText</router-link>
       |
       <router-link to="/Markdown">Markdown</router-link>
