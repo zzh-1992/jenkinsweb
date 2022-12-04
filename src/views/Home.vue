@@ -113,8 +113,9 @@ export default {
 }
 .el-card:hover {
   margin-top: -5px;
-  margin-right: -2px;
-  margin-left: -2px;
+  border-radius: 20px;
+  /*光晕样式*/
+  filter: drop-shadow(0 0 2ex rgb(65, 143, 26));
 }
 .home {
   font-family: Avenir, Helvetica, Arial, sans-serif;

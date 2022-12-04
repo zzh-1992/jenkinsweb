@@ -1,13 +1,33 @@
 <template>
   <!--    保证container沾满全屏 style="position:absolute;left:0;right:0;top:0;bottom:0;overflow:hidden;"-->
-  <el-container class="myContainer" style="position:absolute;left:0;right:0;top:0;bottom:0;overflow:hidden;">
+  <el-container
+    class="myContainer"
+    style="
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      overflow: hidden;
+    "
+  >
     <el-header>
-      <el-tabs @tab-click="handleClick">
-        <el-tab-pane label="Home" name="Home"></el-tab-pane>
-        <el-tab-pane label="RichText" name="RichText"></el-tab-pane>
-        <el-tab-pane label="Markdown" name="Markdown"></el-tab-pane>
-        <el-tab-pane label="MD" name="MD"></el-tab-pane>
-      </el-tabs>
+      <el-row>
+        <el-col :span="22">
+          <el-tabs @tab-click="handleClick">
+            <el-tab-pane label="Home" name="Home"></el-tab-pane>
+            <el-tab-pane label="RichText" name="RichText"></el-tab-pane>
+            <el-tab-pane label="Markdown" name="Markdown"></el-tab-pane>
+            <el-tab-pane label="MD" name="MD"></el-tab-pane>
+          </el-tabs>
+        </el-col>
+        <!--新增个人github仓库地址-->
+        <el-col :span="2">
+          <el-tabs @tab-click="handleClick2">
+            <el-tab-pane label="My Github" name="Home"> </el-tab-pane>
+          </el-tabs>
+        </el-col>
+      </el-row>
     </el-header>
     <el-main>
       <router-view />
@@ -38,6 +58,9 @@ export default {
     handleClick(tab) {
       this.myRoute("/" + tab.props.name);
     },
+    handleClick2() {
+      window.open("https://github.com/zzh-1992/MyDocument", "_blank");
+    },
   },
 };
 </script>
@@ -45,6 +68,21 @@ export default {
 <style>
 .footer {
   margin-right: 24px;
+}
+
+/*优化tab样式*/
+.el-tabs {
+  --el-tabs-header-height: 60px;
+  font-color: rgba(10, 206, 119, 0.67);
+}
+
+.el-header {
+  --el-header-padding: 0 30px;
+  --el-header-height: 60px;
+  padding: var(--el-header-padding);
+  box-sizing: border-box;
+  flex-shrink: 0;
+  height: var(--el-header-height);
 }
 
 #nav {
