@@ -8,18 +8,18 @@
     "serve-test": "vue-cli-service serve --mode test",
     "build_test": "vue-cli-service build --mode test",
     "serve": "vue-cli-service serve --mode pro",
-    "build": "vue-cli-service build --mode pro",
+    "build": "vue-cli-service build --mode pro --report",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^0.2.4",
+    "@vueup/vue-quill": "latest",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
-    "element-plus": "^1.2.0-beta.5",
+    "element-plus": "2.2.26",
     "highlight.js": "^10.7.3",
     "marked": "^4.0.4",
     "vue": "^3.0.0",
-    "vue-quill-editor": "^3.0.6",
     "vue-router": "^4.0.0-0",
     "vue3-quill": "^0.2.6"
   },
@@ -34,8 +34,8 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^7.0.0",
-    "node-sass": "^7.0.0",
+    "node-sass": "^8.0.0",
     "prettier": "^2.2.1",
-    "sass-loader": "^12.4.0"
+    "sass-loader": "^13.2.0"
   }
 }

@@ -1,30 +1,34 @@
 <template>
   <div class="home">
     <el-space wrap>
-      <el-card
-        v-for="i in resourceList"
-        :key="i"
-        class="box-card radius"
-        style="width: 250px"
-        :style="{
-          borderRadius: 'var(--el-border-radius-round)',
-        }"
-      >
-        <template #header>
-          <div class="card-header" align="left">
-            <span>{{ i.name }}</span>
-          </div>
-        </template>
+      <!--      el-card 水平居中方式总结 https://www.cnblogs.com/sgq-blog/articles/15818052.html-->
+      <el-row type="flex" justify="center">
+        <el-card
+          v-for="i in resourceList"
+          :key="i"
+          class="box-card radius"
+          style="width: 250px"
+          shadow="hover"
+          :style="{
+            borderRadius: 'var(--el-border-radius-round)',
+          }"
+        >
+          <template #header>
+            <div class="card-header" align="left">
+              <span>{{ i.name }}</span>
+            </div>
+          </template>
 
-        <el-link :underline="false" target="_blank" @click="goTo(i.url)">
-          <el-image
-            class="logo vue"
-            style="width: 160px; height: 160px"
-            :src="i.imgUrl"
-            :fit="fit"
-          />
-        </el-link>
-      </el-card>
+          <el-link :underline="false" target="_blank" @click="goTo(i.url)">
+            <el-image
+              class="logo vue"
+              style="width: 160px; height: 160px"
+              :src="i.imgUrl"
+              :fit="fit"
+            />
+          </el-link>
+        </el-card>
+      </el-row>
     </el-space>
   </div>
 </template>
@@ -101,6 +105,17 @@ export default {
 </script>
 
 <style scoped>
+/*美化el-card样式*/
+.el-card {
+  margin: 15px;
+  border-radius: 20px;
+  border-color: #487234;
+}
+.el-card:hover {
+  margin-top: -5px;
+  margin-right: -2px;
+  margin-left: -2px;
+}
 .home {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
