@@ -20,7 +20,7 @@
 
     <el-container>
       <el-header>
-        <span>{{ title }}</span>
+        <span>{{ title }}</span><br>
         <el-button type="success" @click="isShowText">显示原文</el-button>
         <el-button type="info" @click="isShowMd">显示md</el-button>
         <!-- 引用子组件,父->子 props:绑定参数 子->父 定义事件 -->
@@ -57,8 +57,29 @@ import Tag from "./Tag";
 // 导入markdown样式
 import "../static/github-markdown.min.css";
 
+import {
+  ElContainer,
+  ElMain,
+  ElHeader,
+  ElTable,
+  ElAside,
+  ElLink,
+  ElButton,
+  ElTableColumn,
+} from "element-plus";
+
 export default defineComponent({
-  components: { Tag },
+  components: {
+    ElContainer,
+    ElMain,
+    ElHeader,
+    ElButton,
+    Tag,
+    ElTable,
+    ElAside,
+    ElLink,
+    ElTableColumn,
+  },
   mounted() {
     this.downloadAllMd();
     marked.setOptions({

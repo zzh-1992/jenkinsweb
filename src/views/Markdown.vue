@@ -2,44 +2,29 @@
   <el-container class="myContainer">
     <el-row>
       <el-col :span="24">
-        <el-col :span="8">
-          <el-button
-            type="success"
-            style="margin-right: 16px"
-            @click="downloadAllMd()"
-          >
-            Show All MD
-          </el-button>
-        </el-col>
+        <el-button
+          type="success"
+          style="margin-right: 16px"
+          @click="downloadAllMd()"
+        >
+          Show All MD
+        </el-button>
 
-        <el-col :span="8">
-          <el-button
-            type="success"
-            style="margin-right: 16px"
-            @click="saveMarkdown()"
-          >
-            Save MD
-          </el-button>
-        </el-col>
+        <el-button
+          type="success"
+          style="margin-right: 16px"
+          @click="saveMarkdown()"
+        >
+          Save MD
+        </el-button>
 
-        <el-col :span="8">
-          <el-button
-            type="success"
-            style="margin-right: 16px"
-            @click="newMarkdown()"
-          >
-            New MD
-          </el-button>
-
-          <el-button
-            type="warning"
-            style="margin-right: 16px"
-            @click="timeOut()"
-          >
-            timeOut
-          </el-button>
-        </el-col>
-
+        <el-button
+          type="success"
+          style="margin-right: 16px"
+          @click="newMarkdown()"
+        >
+          New MD
+        </el-button>
         <el-col :span="18">
           <el-input v-model="title" placeholder="Please input title"></el-input>
         </el-col>
@@ -100,14 +85,33 @@ import "highlight.js/styles/atom-one-dark.css";
 import "../static/github-markdown.min.css";
 
 import { ref } from "vue";
-import { ElMessageBox } from "element-plus";
+import {
+  ElContainer,
+  ElInput,
+  ElRow,
+  ElButton,
+  ElTable,
+  ElMessage,
+  ElMessageBox,
+  ElTableColumn,
+  ElCol,
+  ElDrawer,
+} from "element-plus";
 import Tag from "./Tag";
-import { ElMessage } from "element-plus";
 
 export default {
   name: "HelloWorld",
-  components: { Tag },
-  component: {},
+  components: {
+    ElContainer,
+    ElInput,
+    ElRow,
+    ElButton,
+    Tag,
+    ElTable,
+    ElTableColumn,
+    ElCol,
+    ElDrawer,
+  },
   data() {
     return {
       tags: [],

@@ -15,7 +15,7 @@ if (env === "pro") {
 }
 
 // 设置接口请求时间2000毫秒
-http.defaults.timeout = 2000;
+http.defaults.timeout = 5000;
 
 // 添加请求拦截器
 http.interceptors.request.use(
