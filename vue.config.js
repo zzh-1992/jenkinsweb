@@ -13,6 +13,7 @@ module.exports = {
     externals: {
       vue: "Vue",
       "element-plus": "ElementPlus",
+      "highlight.js": "highlight.js",
     },
     // 开启分离js
     optimization: {
