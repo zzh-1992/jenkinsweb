@@ -1,11 +1,13 @@
 <template>
-  <el-container class="myContainer">
-    <el-header id="nav">
-      <router-link to="/RichText">RichText</router-link>
-      |
-      <router-link to="/Markdown">Markdown</router-link>
-      |
-      <router-link to="/MD">MD</router-link>
+  <!--    保证container沾满全屏 style="position:absolute;left:0;right:0;top:0;bottom:0;overflow:hidden;"-->
+  <el-container class="myContainer" style="position:absolute;left:0;right:0;top:0;bottom:0;overflow:hidden;">
+    <el-header>
+      <el-tabs @tab-click="handleClick">
+        <el-tab-pane label="Home" name="Home"></el-tab-pane>
+        <el-tab-pane label="RichText" name="RichText"></el-tab-pane>
+        <el-tab-pane label="Markdown" name="Markdown"></el-tab-pane>
+        <el-tab-pane label="MD" name="MD"></el-tab-pane>
+      </el-tabs>
     </el-header>
     <el-main>
       <router-view />
@@ -18,6 +20,7 @@
 </template>
 
 <script>
+import router from "./router";
 export default {
   mounted() {
     let env = process.env;
@@ -26,6 +29,15 @@ export default {
     console.log("env_VUE_APP_NAME " + env.VUE_APP_NAME);
     console.log("env_VUE_APP_BASE_API " + env.VUE_APP_BASE_API);
     console.log("当前环境：" + env.NODE_ENV);
+    router.push("/Home");
+  },
+  methods: {
+    myRoute(path) {
+      router.push(path);
+    },
+    handleClick(tab) {
+      this.myRoute("/" + tab.props.name);
+    },
   },
 };
 </script>
@@ -33,14 +45,6 @@ export default {
 <style>
 .footer {
   margin-right: 24px;
-}
-#nav {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #000000;
-  background: #ffffff;
 }
 
 #nav {

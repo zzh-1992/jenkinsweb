@@ -1,15 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-const Home = () => import('../views/Home')
-const Markdown = () => import('../views/Markdown')
-const MD = () => import('../views/MD')
-const Tag = () => import('../views/Tag')
-const Socket = () => import('../views/Socket')
-const RichText = () => import('../views/RichText')
+const Home = () => import("../views/Home");
+const Markdown = () => import("../views/Markdown");
+const MD = () => import("../views/MD");
+const Tag = () => import("../views/Tag");
+const Socket = () => import("../views/Socket");
+const RichText = () => import("../views/RichText");
 
 const routes = [
   {
     path: "/",
+    name: "Home",
+    component: Home,
+  },
+  {
+    path: "/Home",
     name: "Home",
     component: Home,
   },
