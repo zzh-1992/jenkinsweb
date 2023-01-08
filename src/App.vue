@@ -74,7 +74,7 @@ export default {
   flex-basis: auto;
   overflow: hidden;
   box-sizing: border-box;
-  padding: var(--el-main-padding)
+  padding: var(--el-main-padding);
 }
 .el-footer {
   --el-footer-padding: 0 20px;

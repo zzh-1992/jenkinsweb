@@ -1,8 +1,8 @@
 <template>
-  <el-container >
+  <el-container>
     <el-aside width="250px">
       <el-table
-          maxheight="auto"
+        maxheight="auto"
         :data="tableData"
         style="width: 100%; height: 100%"
       >
@@ -199,11 +199,11 @@ body,
   color: #000000;
 }
 
-.el-main{
+.el-main {
   padding-bottom: 10px;
   overflow: hidden;
 }
-.el-main2{
+.el-main2 {
   padding-bottom: 10px;
   overflow: auto;
 }
