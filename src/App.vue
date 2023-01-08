@@ -17,6 +17,7 @@
           <el-tabs @tab-click="handleClick">
             <el-tab-pane label="Home" name="Home"></el-tab-pane>
             <el-tab-pane label="RichText" name="RichText"></el-tab-pane>
+            <el-tab-pane label="TreeTable" name="TreeTable"></el-tab-pane>
             <el-tab-pane label="Markdown" name="Markdown"></el-tab-pane>
             <el-tab-pane label="MD" name="MD"></el-tab-pane>
           </el-tabs>

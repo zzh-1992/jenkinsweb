@@ -6,7 +6,7 @@ const MD = () => import("../views/MD");
 const Tag = () => import("../views/Tag");
 const Socket = () => import("../views/Socket");
 const RichText = () => import("../views/RichText");
-
+const TreeTable = () => import("../views/TreeTable");
 const routes = [
   {
     path: "/",
@@ -17,6 +17,11 @@ const routes = [
     path: "/Home",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/TreeTable",
+    name: "TreeTable",
+    component: TreeTable,
   },
   {
     path: "/Tag",

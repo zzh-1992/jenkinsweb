@@ -19,9 +19,11 @@
     "element-plus": "2.2.26",
     "highlight.js": "^10.7.3",
     "marked": "^4.0.4",
-    "vue": "^3.0.0",
+    "vue": "^3.2.41",
     "vue-router": "^4.0.0-0",
-    "vue3-quill": "^0.2.6"
+    "vue3-quill": "^0.2.6",
+    "vxe-table": "next",
+    "xe-utils": "^3.5.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
