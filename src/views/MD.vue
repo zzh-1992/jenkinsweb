@@ -1,8 +1,8 @@
 <template>
-  <el-container style="height: 800px">
-    <el-aside width="250px" style="background-color: #333333">
+  <el-container >
+    <el-aside width="250px">
       <el-table
-        max-height="800"
+          maxheight="auto"
         :data="tableData"
         style="width: 100%; height: 100%"
       >
@@ -20,14 +20,15 @@
 
     <el-container>
       <el-header>
-        <span>{{ title }}</span><br>
+        <span>{{ title }}</span
+        ><br />
         <el-button type="success" @click="isShowText">显示原文</el-button>
         <el-button type="info" @click="isShowMd">显示md</el-button>
         <!-- 引用子组件,父->子 props:绑定参数 子->父 定义事件 -->
         <Tag v-bind:tags="tags" v-bind:hello="2021" @childTag="fromChild">
         </Tag>
       </el-header>
-      <el-main>
+      <el-main class="el-main2">
         <div id="editor">
           <textarea
             v-show="showText"
@@ -198,6 +199,15 @@ body,
   color: #000000;
 }
 
+.el-main{
+  padding-bottom: 10px;
+  overflow: hidden;
+}
+.el-main2{
+  padding-bottom: 10px;
+  overflow: auto;
+}
+
 textarea,
 body,
 #editor {
@@ -205,6 +215,8 @@ body,
   height: 100%;
   font-family: "Helvetica Neue", Arial, sans-serif;
   color: #333;
+  overflow: auto;
+  border-color: #c01010;
 }
 
 .md {
@@ -214,5 +226,6 @@ body,
   vertical-align: top;
   box-sizing: border-box;
   padding: 0 20px;
+  overflow: auto;
 }
 </style>

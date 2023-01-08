@@ -29,11 +29,11 @@
         </el-col>
       </el-row>
     </el-header>
-    <el-main>
+    <el-main class="el-main">
       <router-view />
     </el-main>
 
-    <el-footer class="footer">
+    <el-footer class="el-footer">
       <a rel="nofollow" href="http://beian.miit.gov.cn/">粤ICP备2022024777号</a>
     </el-footer>
   </el-container>
@@ -66,8 +66,27 @@ export default {
 </script>
 
 <style>
+.el-main {
+  --el-main-padding: 20px;
+  display: block;
+  flex: 1;
+  flex-basis: auto;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: var(--el-main-padding)
+}
+.el-footer {
+  --el-footer-padding: 0 20px;
+  --el-footer-height: 45px;
+  padding: var(--el-footer-padding);
+  box-sizing: border-box;
+  flex-shrink: 0;
+  height: var(--el-footer-height);
+  background-color: #612493;
+}
 .footer {
-  margin-right: 24px;
+  background-color: #301059;
+  font-color: #d3dad3;
 }
 
 /*优化tab样式*/
