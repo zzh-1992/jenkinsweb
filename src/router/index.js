@@ -7,6 +7,8 @@ const Tag = () => import("../views/Tag");
 const Socket = () => import("../views/Socket");
 const RichText = () => import("../views/RichText");
 const TreeTable = () => import("../views/TreeTable");
+const TimeLine = () => import("../views/TimeLine");
+
 const routes = [
   {
     path: "/",
@@ -17,6 +19,11 @@ const routes = [
     path: "/Home",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/TimeLine",
+    name: "TimeLine",
+    component: TimeLine,
   },
   {
     path: "/TreeTable",
