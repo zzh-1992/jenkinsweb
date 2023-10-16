@@ -31,7 +31,7 @@
         </Tag>
       </el-header>
       <el-main class="el-main2">
-        <div id="editor" style="height: 50%; overflow-y: auto">
+        <div id="editor" style="height: 680px; overflow-y: auto">
           <textarea
             v-show="showText"
             class="markdown-body md"
@@ -233,7 +233,7 @@ body,
 }
 .el-main2 {
   padding-bottom: 10px;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 textarea,
