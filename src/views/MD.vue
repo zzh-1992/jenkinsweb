@@ -20,8 +20,10 @@
 
     <el-container>
       <el-header>
-        <span>{{ title }}</span
-        ><br />
+        <!--        <span>{{ title }}</span>-->
+        <el-input v-model="title" placeholder="Please input title"></el-input>
+        <br />
+        <el-button type="success" @click="saveMarkdown">保存</el-button>
         <el-button type="success" @click="isShowText">显示原文</el-button>
         <el-button type="info" @click="isShowMd">显示md</el-button>
         <!-- 引用子组件,父->子 props:绑定参数 子->父 定义事件 -->
@@ -29,7 +31,7 @@
         </Tag>
       </el-header>
       <el-main class="el-main2">
-        <div id="editor">
+        <div id="editor" style="height: 50%; overflow-y: auto">
           <textarea
             v-show="showText"
             class="markdown-body md"
@@ -58,6 +60,8 @@ import Tag from "./Tag";
 // 导入markdown样式
 import "../static/github-markdown.min.css";
 
+import { saveMarkdown } from "@/http/api";
+
 import {
   ElContainer,
   ElMain,
@@ -67,6 +71,7 @@ import {
   ElLink,
   ElButton,
   ElTableColumn,
+  ElMessage,
 } from "element-plus";
 
 export default defineComponent({
@@ -141,6 +146,21 @@ export default defineComponent({
       // 将子组件传递的数据赋值给父组件的tags
       this.tags = childData.dynamicTags;
     },
+    saveMarkdown() {
+      try {
+        const response = saveMarkdown(
+          this.input,
+          this.id,
+          this.title,
+          this.tags
+        );
+        this.id = response.id;
+        //console.log("List:" + response);
+        this.successMsg(new Date().toDateString());
+      } catch (err) {
+        console.log(err);
+      }
+    },
     downloadAllMd() {
       this.drawer = true;
       console.log("下载所有");
@@ -161,12 +181,12 @@ export default defineComponent({
         .then((response) => {
           // 属性赋值
           this.input = response.content;
-          this.id = response.id;
+          this.id = id;
           this.title = response.title;
           this.tags = response.tagArray;
           // 成功获取文件后关闭draw
           this.drawer = false;
-          console.log("List:" + response);
+          // console.log("List:" + response);
         })
         .catch((err) => {
           console.log(err);
@@ -180,10 +200,18 @@ export default defineComponent({
       address: "No. 189, Grove St, Los Angeles",
     };
 
+    const successMsg = (msg) => {
+      ElMessage({
+        message: "Successfully saved." + msg,
+        type: "success",
+      });
+    };
+
     const tableData2 = ref(Array(20).fill(item));
 
     return {
       tableData2,
+      successMsg,
     };
   },
 });
